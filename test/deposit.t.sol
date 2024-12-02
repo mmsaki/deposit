@@ -33,4 +33,14 @@ contract DepositTest is Test {
         console.log(block.timestamp, "0.2 Contract balance:", address(this).balance, "ETH");
         console.log("0.3 Exit. ⚠️");
     }
+
+    function testFuzz_Deposit_31ETH_Then_1ETH(
+
+        ) public payable {
+        /* TODO: 
+        * Write function where
+        * 1. You deposit 31 Eth to DepositContract, then
+        * 2. You deposit 1 Eth to DepositContract
+        */
+    }
 }
