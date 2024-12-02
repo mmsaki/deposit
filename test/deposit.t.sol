@@ -35,12 +35,34 @@ contract DepositTest is Test {
     }
 
     function testFuzz_Deposit_31ETH_Then_1ETH(
-
         ) public payable {
         /* TODO: 
         * Write function where
         * 1. You deposit 31 Eth to DepositContract, then
         * 2. You deposit 1 Eth to DepositContract
         */
+
+        // begin
+    }
+
+    function test_Get_Deposit_Count() public {
+        /* TODO: 
+        * Write function where
+        * 1. You deposit 32 Eth to DepositContract, then
+        * 2. You get deposit count
+        */
+
+        // begin
+    }
+
+    function test_Get_Deposit_Root() public {
+        /* TODO: 
+        * Write function where
+        * 1. You deposit 32 Eth to DepositContract, then
+        * 2. You get deposit root
+        */
+
+        // begin
     }
 }
+

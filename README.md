@@ -1,5 +1,26 @@
 ## ETH2 Deposit Contract Fuzz
 
+Mainnet address : [0x00000000219ab540356cbb839cbe05303d7705fa](https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa#code)
+
+## TOC
+
+- [x] Deposit 32 ETH test
+- [ ] Deposit 31 ETH then 1 ETH test
+- [ ] IncrementalMerkle Tree test
+
+## Coverage
+
+|     | test          | function              | Test                                                                                                                                              |
+| --- | ------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Deposits      | `deposit()`           | ✅ [`testFuzz_Deposit32ETH_Once()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L17)       |
+|     |               |                       | ⏳ [`testFuzz_Deposit_31ETH_Then_1ETH()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L37) |
+|     | Deposot Count | `get_deposit_count()` | ⏳ [`test_Get_Deposit_Count()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L48)           |
+|     | Deposot Root  | `get_deposit_root()`  | ⏳ [`test_Get_Deposit_Root()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L58)            |
+
+### Test
+
+Run test with `forge test`
+
 ```ml
 Ran 1 test for test/deposit.t.sol:DepositTest
 [PASS] testFuzz_Deposit32ETH_Once() (gas: 79379)
@@ -41,21 +62,4 @@ Traces:
 Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.75ms (532.48µs CPU time)
 
 Ran 1 test suite in 698.69ms (1.75ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
-```
-
-## Coverage
-
-|     | function    | Test                                                                                                                                              |
-| --- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | `deposit()` | ✅ [`testFuzz_Deposit32ETH_Once()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L17)       |
-|     |             | ❌ [`testFuzz_Deposit_31ETH_Then_1ETH()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L37) |
-
-### Test
-
-```shell
-$ forge test
-```
-
-```
-
 ```
