@@ -43,17 +43,12 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.75ms (532.48µs C
 Ran 1 test suite in 698.69ms (1.75ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
 ```
 
-## Documentation
+## Coverage
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
+|     | function    | Test                                                                                                                                              |
+| --- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | `deposit()` | ✅ [`testFuzz_Deposit32ETH_Once()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L17)       |
+|     |             | ❌ [`testFuzz_Deposit_31ETH_Then_1ETH()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L37) |
 
 ### Test
 
@@ -61,40 +56,6 @@ $ forge build
 $ forge test
 ```
 
-### Format
-
-```shell
-$ forge fmt
 ```
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
