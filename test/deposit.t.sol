@@ -11,10 +11,10 @@ contract DepositTest is Test {
 
     function setUp() public {
         deposit = new DepositContract();
-        vm.deal(address(this), 64 ether);
+        vm.deal(address(this), 32 ether);
     }
 
-    function testFuzz_Deposit(
+    function testFuzz_Deposit32ETH_Once(
 
         ) public payable {
         bytes memory p = hex"92fbe9f4761625673fe21ce9db5c975d40f1f64e1b554ebb5bd71d0a5de13d30d8ed894cceb5487d193b9defb23eb941";
@@ -26,15 +26,11 @@ contract DepositTest is Test {
             );
         bytes32 d = 0x08345126fa802d58b2afb567bee5879c9d19dd228f099f5b271944bb64f1bacd;
 
-        console.log(block.timestamp, "0.0 Contract balance:", address(this).balance);
+        console.log(block.timestamp, "0.0 Contract balance:", address(this).balance / 1 ether, "ETH");
         deposit.deposit{value: 32 ether}(p,w,s,d);
 
-        // console.log(block.timestamp, "0.1 Depositing 31 ETH...");
-        // console.log(block.timestamp, "0.2 Contract balance:", address(this).balance);
-        // deposit.deposit{value: 1 ether}(p,w,s,d);
-
-        // console.log(block.timestamp, "0.3 Depositing 1 ETH...");
-        // console.log(block.timestamp, "0.4 Contract balance:", address(this).balance);
-        console.log("0.5 Exit. ⚠️");
+        console.log(block.timestamp, "0.1 Depositing", 32 ether, "wei...");
+        console.log(block.timestamp, "0.2 Contract balance:", address(this).balance, "ETH");
+        console.log("0.3 Exit. ⚠️");
     }
 }
