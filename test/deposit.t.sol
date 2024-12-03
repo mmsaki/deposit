@@ -14,7 +14,7 @@ contract DepositTest is DepositSetup {
         vm.deal(address(this), 32 ether);
     }
 
-    function test_Deposit32ETH() public {
+    function test_ValidDeposit_Success() public {
         // 1. Get valid BLS params
         DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
 
@@ -24,7 +24,7 @@ contract DepositTest is DepositSetup {
         );
     }
 
-    function testFuzz_Deposit_Bad_Signature(bytes32 a, bytes32 b, bytes32 c) public {
+    function test_InvalidSignature_Fail(bytes32 a, bytes32 b, bytes32 c) public {
         // 1. Get valid BLS params
         DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
 
@@ -33,13 +33,28 @@ contract DepositTest is DepositSetup {
         deposit.deposit{value: 32 ether}(
             depositData.pubkey,
             depositData.withdrawal_credentials,
-            // bad signature
+            // bad reconstructed signature != deposit_data_root
             abi.encodePacked(a, b, c),
             depositData.deposit_data_root
         );
     }
 
-    function testFuzz_Deposit_Bad_Withdraw_Address(uint8 marker, address withdraw) public payable {
+    function test_InvalidSignatureLength_Fail(bytes32 a, bytes32 b) public {
+        // 1. Get valid BLS params
+        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+
+        // 2. Call deposit
+        vm.expectRevert(bytes("DepositContract: invalid signature length"));
+        deposit.deposit{value: 32 ether}(
+            depositData.pubkey,
+            depositData.withdrawal_credentials,
+            // bad signature length
+            abi.encodePacked(a, b),
+            depositData.deposit_data_root
+        );
+    }
+
+    function test_InvalidWithdraw_Fail(uint8 marker, address withdraw) public payable {
         // 1. Get valid BLS params
         DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
 
@@ -47,14 +62,29 @@ contract DepositTest is DepositSetup {
         vm.expectRevert(bytes("DepositContract: reconstructed DepositData does not match supplied deposit_data_root"));
         deposit.deposit{value: 32 ether}(
             depositData.pubkey,
-            // bad withdrawal address
+            // bad random withdrawal address
             abi.encodePacked(uint256(marker << 0xf8) | uint256(withdraw)),
             depositData.signature,
             depositData.deposit_data_root
         );
     }
 
-    function test_PartialDeposits() public {
+    function test_InvalidWithdrawLength_Fail(address withdraw) public payable {
+        // 1. Get valid BLS params
+        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+
+        // 2. Call deposit
+        vm.expectRevert(bytes("DepositContract: invalid withdrawal_credentials length"));
+        deposit.deposit{value: 32 ether}(
+            depositData.pubkey,
+            // bad withdrawal_credentials length
+            abi.encodePacked(uint160(withdraw)),
+            depositData.signature,
+            depositData.deposit_data_root
+        );
+    }
+
+    function test_ValidPartialDeposit_Success() public {
         /* TODO: 
         * Write function where
         * 1. You deposit 31 Eth to DepositContract, then
@@ -81,7 +111,7 @@ contract DepositTest is DepositSetup {
         );
     }
 
-    function test_Get_Deposit_Count() public {
+    function test_ValidDepositCount_Success() public {
         /* TODO: 
         * Write function where
         * 1. You deposit 32 Eth to DepositContract, then
@@ -91,7 +121,7 @@ contract DepositTest is DepositSetup {
         // begin
     }
 
-    function test_Get_Deposit_Root() public {
+    function test_ValidDepositRoot_Success() public {
         /* TODO: 
         * Write function where
         * 1. You deposit 32 Eth to DepositContract, then
