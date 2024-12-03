@@ -54,14 +54,31 @@ contract DepositTest is DepositSetup {
         );
     }
 
-    function testDeposit_31ETH_Then_1ETH() public {
+    function test_PartialDeposits() public {
         /* TODO: 
         * Write function where
         * 1. You deposit 31 Eth to DepositContract, then
         * 2. You deposit 1 Eth to DepositContract
         */
 
-        // begin
+        // 0. Get partial deposits
+        DepositSetup.DepositData[] memory depositData = _getPartialDepositData();
+
+        // 1. Call with 31 ETH data
+        deposit.deposit{value: 31 ether}(
+            depositData[0].pubkey,
+            depositData[0].withdrawal_credentials,
+            depositData[0].signature,
+            depositData[0].deposit_data_root
+        );
+
+        // 2. Call with 1 ETH data
+        deposit.deposit{value: 1 ether}(
+            depositData[1].pubkey,
+            depositData[1].withdrawal_credentials,
+            depositData[1].signature,
+            depositData[1].deposit_data_root
+        );
     }
 
     function test_Get_Deposit_Count() public {
