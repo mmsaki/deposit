@@ -29,7 +29,7 @@ Deposit Contract
 
 ## Validator Keys
 
-Set up:
+Create keys:
 
 ```bash
 ./deposit new-mnemonic --num_validators 1 --chain holesky --eth1_withdrawal_address 0xFE948CB2122FDD87bAf43dCe8aFa254B1242c199
