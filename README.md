@@ -14,7 +14,7 @@ Deposit Contract
 |     |            | [`test_InvalidSignatureLength_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L58-71)   | ✅   |
 |     |            | [`test_InvalidWithdraw_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L73-86)          | ✅   |
 |     |            | [`test_InvalidWithdrawLength_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L88-101)   | ✅   |
-|     |            | [`test_ValidPartialDeposit_Success()`](https://github.com/mmsaki/deposit/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L103-L128)     | ✅   |
+|     |            | [`test_ValidPartialDeposit_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L103-L128)     | ✅   |
 |     |            | [`test_ValidDepositCount_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L130-L139)  | 🕯️   |
 |     |            | [`test_ValidDepositRoot_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L140-L149)          | 🕯️   |
 | 2   | 🗂️ merkle  |                                                                                                                                                            | 🗂️   |
