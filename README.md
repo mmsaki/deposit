@@ -20,6 +20,7 @@ Mainnet address : [0x00000000219ab540356cbb839cbe05303d7705fa](https://etherscan
 |     |         |                       | ⏳ [`testDeposit_31ETH_Then_1ETH()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L61)           |
 |     |         | `get_deposit_count()` | ⏳ [`test_Get_Deposit_Count()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L72)                |
 |     |         | `get_deposit_root()`  | ⏳ [`test_Get_Deposit_Root()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L82)                 |
+| 2   | merkle  |                       |                                                                                                                                                        |
 
 ### Test
 
