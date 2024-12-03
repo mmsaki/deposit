@@ -11,7 +11,7 @@ Deposit Contract
 | --- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
 | 1   | 🗂️ deposit | [`test_ValidDeposit_Success()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L21-L29)             | ✅   |
 |     |            | [`test_InvalidSignature_Fail()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L43-L56)        | ✅   |
-|     |            | [`test_InvalidSignatureLength_Fail()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L58-71)   | ✅   |
+|     |            | [`test_InvalidSignatureLength_Fail()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L58-L71)   | ✅   |
 |     |            | [`test_InvalidWithdraw_Fail()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L73-L86)         | ✅   |
 |     |            | [`test_InvalidWithdrawLength_Fail()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L88-L101)  | ✅   |
 |     |            | [`test_ValidPartialDeposit_Success()`](https://github.com/mmsaki/deposit/blob/main/test/deposit.t.sol#L103-L128)| ✅   |
