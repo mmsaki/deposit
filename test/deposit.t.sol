@@ -9,9 +9,13 @@ import {DepositContract} from "../src/deposit.sol";
 import {DepositSetup} from "./depositSetup.t.sol";
 
 contract DepositTest is DepositSetup {
+    DepositContract depositMainnet;
+
     function setUp() public virtual override {
         super.setUp();
         vm.deal(address(this), 32 ether);
+
+        depositMainnet = DepositContract(0x00000000219ab540356cBB839Cbe05303d7705Fa);
     }
 
     function test_ValidDeposit_Success() public {
@@ -20,6 +24,18 @@ contract DepositTest is DepositSetup {
 
         // 2. Call deposit
         deposit.deposit{value: 32 ether}(
+            depositData.pubkey, depositData.withdrawal_credentials, depositData.signature, depositData.deposit_data_root
+        );
+    }
+
+    function test_ValidDeposit_Success_Mainnet() public {
+        // 1. Get valid BLS params
+        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+
+        // 2. Call deposit
+        vm.createSelectFork("mainnet");
+        console.log("timestamp", block.timestamp);
+        depositMainnet.deposit{value: 32 ether}(
             depositData.pubkey, depositData.withdrawal_credentials, depositData.signature, depositData.deposit_data_root
         );
     }
