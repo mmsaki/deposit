@@ -1,13 +1,9 @@
 ## ETH2 Deposit Contract Tests
 
-Mainnet address : [0x00000000219ab540356cbb839cbe05303d7705fa](https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa#code)
+Deposit Contract
 
-## TOC
-
-- [x] Test 32 ETH deposit
-- [x] Test patial deposits e.g (31 Eth, then 1 Eth)
-- [ ] Test incremental merkle tree (differential)
-<!-- > [Differential ffi testing](https://book.getfoundry.sh/forge/differential-ffi-testing?highlight=ffi#primer-the-ffi-cheatcode) -->
+- Mainnet - [0x00000000219ab540356cbb839cbe05303d7705fa](https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa#code)
+- Holesky - [0x00000000219ab540356cbb839cbe05303d7705fa](https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa#code)
 
 ## Coverage (WIP)
 
@@ -23,11 +19,27 @@ Mainnet address : [0x00000000219ab540356cbb839cbe05303d7705fa](https://etherscan
 |     |            | [`test_ValidDepositRoot_Success()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L94)         | 🕯️   |
 | 2   | 🗂️ merkle  |                                                                                                                                                     | 🗂️   |
 
+<!-- > [Differential ffi testing](https://book.getfoundry.sh/forge/differential-ffi-testing?highlight=ffi#primer-the-ffi-cheatcode) -->
+
 | key |         |
 | --- | ------- |
 | 🗂️  | Module  |
 | ✅  | Passing |
 | 🕯️  | WIP     |
+
+## Validator Keys
+
+Set up:
+
+```bash
+./deposit new-mnemonic --num_validators 1 --chain holesky --eth1_withdrawal_address 0xFE948CB2122FDD87bAf43dCe8aFa254B1242c199
+```
+
+## Build Validator Transactions
+
+```bash
+./deposit partial-deposit --chain mainnet --withdrawal_address 0xFE948CB2122FDD87bAf43dCe8aFa254B1242c199 --keystore validator_keys/keystore-m_12381_3600_0_0_0-1733214572.json --amount 31 --output_folder . --regular-withdrawal
+```
 
 ### Test
 
