@@ -12,12 +12,12 @@ Deposit Contract
 | 1   | 🗂️ deposit | [`test_ValidDeposit_Success()`](https://github.com/mmsaki/deposit/blob/cc75a9a4a188ff3b12608fe33afa4b05efc82c57/test/deposit.t.sol#L17)             | ✅   |
 |     |            | [`test_InvalidSignature_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L43-L56)        | ✅   |
 |     |            | [`test_InvalidSignatureLength_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L58-71)   | ✅   |
-|     |            | [`test_InvalidWithdraw_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L73-86)          | ✅   |
-|     |            | [`test_InvalidWithdrawLength_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L88-101)   | ✅   |
-|     |            | [`test_ValidPartialDeposit_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L103-L128)     | ✅   |
+|     |            | [`test_InvalidWithdraw_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L73-L86)         | ✅   |
+|     |            | [`test_InvalidWithdrawLength_Fail()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L88-L101)  | ✅   |
+|     |            | [`test_ValidPartialDeposit_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L103-L128)| ✅   |
 |     |            | [`test_ValidDepositCount_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L130-L139)  | 🕯️   |
-|     |            | [`test_ValidDepositRoot_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L140-L149)          | 🕯️   |
-| 2   | 🗂️ merkle  |                                                                                                                                                            | 🗂️   |
+|     |            | [`test_ValidDepositRoot_Success()`](https://github.com/mmsaki/deposit/blob/40d6e682b33252d4001ba4728bd63ff9ef7aa34e/test/deposit.t.sol#L140-L149)   | 🕯️   |
+| 2   | 🗂️ merkle  |                                                                                                                                                     | 🗂️   |
 
 <!-- > [Differential ffi testing](https://book.getfoundry.sh/forge/differential-ffi-testing?highlight=ffi#primer-the-ffi-cheatcode) -->
 
