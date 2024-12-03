@@ -1,0 +1,13 @@
+[
+  {
+    "pubkey": "92fbe9f4761625673fe21ce9db5c975d40f1f64e1b554ebb5bd71d0a5de13d30d8ed894cceb5487d193b9defb23eb941",
+    "withdrawal_credentials": "010000000000000000000000fe948cb2122fdd87baf43dce8afa254b1242c199",
+    "amount": 1000000000,
+    "signature": "a67b37c0e29bf4333adf2fd3ea266b183a503d7136cc0700d123e05b934fd71f9164ebc79e299198fec27e712fae7f5e08d9e424d4e5a1708bb900eadf73aad1bb9055150b12990cd955fabee7179e26e40aeaea75dda32c04c86db25dcccdaf",
+    "deposit_message_root": "10297aef2cddb0142733392599b99245577f689494021f8ff6865d04188ebd56",
+    "deposit_data_root": "8860ad456bb761ea6fca70426827d5acc125871daa23a19f32c9adaee2fd3d42",
+    "fork_version": "01017000",
+    "network_name": "holesky",
+    "deposit_cli_version": "10.6.0"
+  }
+]
