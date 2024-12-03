@@ -33,7 +33,7 @@ contract DepositTest is DepositSetup {
         deposit.deposit{value: 32 ether}(
             depositData.pubkey,
             depositData.withdrawal_credentials,
-            // bad reconstructed signature != deposit_data_root
+            // BAD SIGNATURE: deposit data root != hash(hash(hash(pubkey, bytes16(0)), withdrawal_credentials), sha256(bytes8(amount), bytes24(0), hash(signature))))
             abi.encodePacked(a, b, c),
             depositData.deposit_data_root
         );
