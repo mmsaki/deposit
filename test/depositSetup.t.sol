@@ -7,10 +7,11 @@ import {Test, console} from "forge-std/Test.sol";
 import {stdJson} from "forge-std/StdJson.sol";
 import {DepositContract} from "../src/deposit.sol";
 
-
 contract DepositSetup is Test {
     DepositContract public deposit;
+
     using stdJson for string;
+
     string[] depositDataPaths;
 
     struct DepositData {
@@ -26,7 +27,7 @@ contract DepositSetup is Test {
 
     function setUp() public virtual {
         deposit = new DepositContract();
-        
+
         depositDataPaths.push("/partial_deposits/deposit_data-1733147074.json"); // 32 ETH deposit
         depositDataPaths.push("/partial_deposits/deposit_data-1733191448.json"); // 31 ETH deposit
         depositDataPaths.push("/partial_deposits/deposit_data-1733191529.json"); // 1 ETH deposit
@@ -36,11 +37,11 @@ contract DepositSetup is Test {
         string memory root = vm.projectRoot();
         string memory path = string(abi.encodePacked(bytes(root), _path));
         string memory json = vm.readFile(path);
-        
+
         bytes memory pubkey = vm.parseJsonBytes(json, ".[0].pubkey");
         bytes memory withdrawal_credentials = vm.parseJsonBytes(json, ".[0].withdrawal_credentials");
         uint64 amount = uint64(vm.parseJsonUint(json, ".[0].amount"));
-        bytes memory signature =  vm.parseJsonBytes(json, ".[0].signature");
+        bytes memory signature = vm.parseJsonBytes(json, ".[0].signature");
         bytes32 deposit_data_root = vm.parseJsonBytes32(json, ".[0].deposit_data_root");
         bytes32 deposit_message_root = vm.parseJsonBytes32(json, ".[0].deposit_message_root");
         bytes memory fork_version = vm.parseJsonBytes(json, ".[0].fork_version");
@@ -66,7 +67,7 @@ contract DepositSetup is Test {
 
     function _getPartialDepositData() public view returns (DepositData[] memory) {
         DepositData[] memory deposits = new DepositData[](2);
-        
+
         deposits[0] = _getDepositData(depositDataPaths[1]);
         deposits[1] = _getDepositData(depositDataPaths[2]);
 
