@@ -41,6 +41,9 @@ contract DepositTest is DepositSetup {
         );
     }
 
+    /*
+    * BUG: User can create generate malicious deposit data because contract does not verify.
+    */
     function test_FailFakeDeposit(bytes32 p, uint64 amount, bytes32 a, bytes32 b, bytes32 c) public {
         amount = uint64(bound(amount, 1 ether, uint256(2 ** 64 - 1))) / 1 gwei * 1 gwei;
 
@@ -54,6 +57,10 @@ contract DepositTest is DepositSetup {
         );
     }
 
+    /*
+    * BUG: Allows deposit data to be reused on different chain?
+    *      Allows deposit data to be used on the same chain.
+    */
     function test_FailReusedDepositParams() public {
         // 1. Get valid BLS params
         DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
