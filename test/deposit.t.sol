@@ -9,18 +9,20 @@ import {DepositContract} from "../src/deposit.sol";
 import {DepositSetup} from "./depositSetup.t.sol";
 
 contract DepositTest is DepositSetup {
-    DepositContract depositMainnet;
+    DepositContract mainnetDeposit;
+    DepositContract holeskyDeposit;
 
     function setUp() public virtual override {
         super.setUp();
         vm.deal(address(this), 32 ether);
 
-        depositMainnet = DepositContract(0x00000000219ab540356cBB839Cbe05303d7705Fa);
+        mainnetDeposit = DepositContract(0x00000000219ab540356cBB839Cbe05303d7705Fa);
+        holeskyDeposit = DepositContract(0x4242424242424242424242424242424242424242);
     }
 
     function test_ValidDeposit_Success() public {
         // 1. Get valid BLS params
-        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
 
         // 2. Call deposit
         deposit.deposit{value: 32 ether}(
@@ -28,21 +30,51 @@ contract DepositTest is DepositSetup {
         );
     }
 
-    function test_ValidDeposit_Success_Mainnet() public {
+    function test_SuccessFullDeposit() public {
         // 1. Get valid BLS params
-        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
 
         // 2. Call deposit
+        vm.createSelectFork("holesky");
+        holeskyDeposit.deposit{value: 32 ether}(
+            depositData.pubkey, depositData.withdrawal_credentials, depositData.signature, depositData.deposit_data_root
+        );
+    }
+
+    function test_FailFakeDeposit(bytes32 p, uint64 amount, bytes32 a, bytes32 b, bytes32 c) public {
+        amount = uint64(bound(amount, 1 ether, uint256(2 ** 64 - 1))) / 1 gwei * 1 gwei;
+
+        // 1. Get valid Fake deposit params
+        DepositSetup.DepositData memory depositData =
+            _generateFakeParams(p, bytes32(uint256(address(this))), amount, a, b, c);
+
+        // 2. Call deposit
+        deposit.deposit{value: amount}(
+            depositData.pubkey, depositData.withdrawal_credentials, depositData.signature, depositData.deposit_data_root
+        );
+    }
+
+    function test_FailReusedDepositParams() public {
+        // 1. Get valid BLS params
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
+
+        // 2. Call deposit on mainnet
         vm.createSelectFork("mainnet");
-        console.log("timestamp", block.timestamp);
-        depositMainnet.deposit{value: 32 ether}(
+        mainnetDeposit.deposit{value: 32 ether}(
+            depositData.pubkey, depositData.withdrawal_credentials, depositData.signature, depositData.deposit_data_root
+        );
+
+        // 3. Call deposit on holesky
+        vm.createSelectFork("holesky");
+        vm.deal(address(this), 32 ether);
+        holeskyDeposit.deposit{value: 32 ether}(
             depositData.pubkey, depositData.withdrawal_credentials, depositData.signature, depositData.deposit_data_root
         );
     }
 
     function test_InvalidSignature_Fail(bytes32 a, bytes32 b, bytes32 c) public {
         // 1. Get valid BLS params
-        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
 
         // 2. Call deposit
         vm.expectRevert(bytes("DepositContract: reconstructed DepositData does not match supplied deposit_data_root"));
@@ -57,7 +89,7 @@ contract DepositTest is DepositSetup {
 
     function test_InvalidSignatureLength_Fail(bytes32 a, bytes32 b) public {
         // 1. Get valid BLS params
-        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
 
         // 2. Call deposit
         vm.expectRevert(bytes("DepositContract: invalid signature length"));
@@ -72,7 +104,7 @@ contract DepositTest is DepositSetup {
 
     function test_InvalidWithdraw_Fail(uint8 marker, address withdraw) public payable {
         // 1. Get valid BLS params
-        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
 
         // 2. Call deposit
         vm.expectRevert(bytes("DepositContract: reconstructed DepositData does not match supplied deposit_data_root"));
@@ -87,7 +119,7 @@ contract DepositTest is DepositSetup {
 
     function test_InvalidWithdrawLength_Fail(address withdraw) public payable {
         // 1. Get valid BLS params
-        DepositSetup.DepositData memory depositData = get_32ETH_deposit_params();
+        DepositSetup.DepositData memory depositData = _getHoleskyFullDepositParams();
 
         // 2. Call deposit
         vm.expectRevert(bytes("DepositContract: invalid withdrawal_credentials length"));
@@ -108,7 +140,7 @@ contract DepositTest is DepositSetup {
         */
 
         // 0. Get partial deposits
-        DepositSetup.DepositData[] memory depositData = _getPartialDepositData();
+        DepositSetup.DepositData[] memory depositData = _getHoleskyPartialDepositParams();
 
         // 1. Call with 31 ETH data
         deposit.deposit{value: 31 ether}(
