@@ -4,7 +4,7 @@ pragma solidity 0.6.11;
 import {Script, console} from "forge-std/Script.sol";
 import {DepositContract} from "../src/deposit.sol";
 
-contract CounterScript is Script {
+contract DepositScript is Script {
     DepositContract public deposit;
 
     function setUp() public {}
