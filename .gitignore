@@ -29,4 +29,3 @@ src/IDepositContract_evm.json
 src/ReturnDataSizeOffset.huff
 src/example/
 src/offset/
-test/IDepositContract.sol
