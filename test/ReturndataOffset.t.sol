@@ -16,6 +16,7 @@ contract Code {
 
 contract ReturndataOffsetExternalContractTest is Test {
     Code c;
+
     function setUp() public {
         c = new Code();
     }
@@ -58,7 +59,6 @@ contract ReturndataOffsetExternalContractTest is Test {
         assertEq(returndataSize, 0x20);
         assertEq(data, a);
     }
-
 
     function testCallDataOffsetCopy() public returns (bool success, uint256 data) {
         bytes4 selector = 0x26121ff0; // f()
@@ -179,7 +179,6 @@ contract ReturndataOffsetExternalContractTest is Test {
 }
 
 contract ReturndataOffsetSelfcallTest is Test {
-
     function f() public pure returns (uint256) {
         return type(uint256).max;
     }
