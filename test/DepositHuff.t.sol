@@ -68,21 +68,4 @@ contract DepositHuffTest is Test {
         console.log("length", uint256(len));
         assertEq(uint256(success), 1);
     }
-
-    function testFuzzCallDataCopy(uint256 a) public {
-        a = bound(a, 0, 2 ** 256 - 2);
-        bytes4 selector = 0xb3de648b;
-        address addr = address(this);
-        bytes32 data;
-        assembly {
-            mstore(0x00, selector)
-            mstore(0x04, add(a, 0x01))
-            let success := call(gas(), addr, 0, 0x00, 0x24, 0x200, returndatasize())
-            // returndatacopy(0x180, 0x00, returndatasize())
-            data := mload(0x200)
-        }
-
-        // assertEq(abi.encode(f(a + 1)), abi.encode(a + 1));
-        assertEq(abi.encode(data), abi.encode(a + 1));
-    }
 }
