@@ -1,0 +1,3744 @@
+//0x22895118000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000001207f05d633f19e32f0f3ef2753b28753d621a7a8b8935025028f680f4d8beb6d07000000000000000000000000000000000000000000000000000000000000003094aaa9040cc9f177e2a42d13f1988f27447afc70dc93484f2c86113054afe9b015cf5151cf8b23169e40668a667c1bce00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000776803baec1f3b7b111962437cd3d49315c1e7b777cfea345bdb7c1e9e0e710000000000000000000000000000000000000000000000000000000000000060abe8885d2221e245cc3c153fcc2ea3e62762635d82c6060b91e097437e01464dc9f9f804e3ac1d895a2f557c819d48b60263e1147f30a6e6027b0aa73ab186015acd1442d9b238139b183d80b654dc8cb044e3aeaa2ddc8fc093d092c8633fc9
+
+// MethodID: 0x22895118
+// [0]:  0x4   0000000000000000000000000000000000000000000000000000000000000080
+// [1]:  0x24  00000000000000000000000000000000000000000000000000000000000000e0
+// [2]:  0x44  0000000000000000000000000000000000000000000000000000000000000120
+// [3]:  0x64  7f05d633f19e32f0f3ef2753b28753d621a7a8b8935025028f680f4d8beb6d07 // signature
+// [4]:  0x84  0000000000000000000000000000000000000000000000000000000000000030 // pubkey.length
+// [5]:  0xa4  94aaa9040cc9f177e2a42d13f1988f27447afc70dc93484f2c86113054afe9b0
+// [6]:  0xc4  15cf5151cf8b23169e40668a667c1bce00000000000000000000000000000000
+// [7]:  0xe4  0000000000000000000000000000000000000000000000000000000000000020 // wc.length
+// [8]:  0x104 00776803baec1f3b7b111962437cd3d49315c1e7b777cfea345bdb7c1e9e0e71
+// [9]:  0x124 0000000000000000000000000000000000000000000000000000000000000060 // signature.length
+// [10]: 0x144 abe8885d2221e245cc3c153fcc2ea3e62762635d82c6060b91e097437e01464d
+// [11]: 0x164 c9f9f804e3ac1d895a2f557c819d48b60263e1147f30a6e6027b0aa73ab18601
+// [12]: 0x184 5acd1442d9b238139b183d80b654dc8cb044e3aeaa2ddc8fc093d092c8633fc9
+
+// Stack Items: (before call to little endian)
+// [1]: 7f05d633f19e32f0f3ef2753b28753d621a7a8b8935025028f680f4d8beb6d07 (hash data root)
+// [2]: 60  (signature.length)
+// [3]: 144 (signature.start)
+// [4]: 20  (withrawal_address.length)
+// [5]: 104 (wc.start)
+// [6]: 30  (pubkey.length)
+// [7]: a4  (pubkey.start)
+// [8]: 12c (tag_1 dest stop)
+// [9]: 22895118 (function selector)
+
+// Stack Items: (durring amount)
+// [0]: value / 1 wei
+// [1]: 7f05d633f19e32f0f3ef2753b28753d621a7a8b8935025028f680f4d8beb6d07 (hash data root)
+// [2]: 60  (signature.length)
+// [3]: 144 (signature.start)
+// [4]: 20  (withrawal_address.length)
+// [5]: 104 (wc.start)
+// [6]: 30  (pubkey.length)
+// [7]: a4  (pubkey.start)
+// [8]: 12c (tag_1 dest stop)
+// [9]: 22895118 (function selector)
+
+#define macro MAIN() = {
+    /* "src/deposit.sol":4584:9424  contract DepositContract is IDepositContract, ERC165 {... */
+    0x80
+    0x40
+    mstore
+    0x04 calldatasize lt
+    tag_1
+    jumpi
+    0x00 calldataload 0xe0 shr
+    dup1
+    0x01ffc9a7
+    eq
+    tag_2
+        jumpi
+        dup1
+        0x22895118
+        eq
+    tag_3
+        jumpi
+        dup1
+        0x621fd130
+        eq
+    tag_4
+        jumpi
+        dup1
+        0xc5f2892f
+        eq
+    tag_5
+        jumpi
+    tag_1:
+        0x00
+        dup1
+        revert
+            /* "src/deposit.sol":8748:8949  function supportsInterface(bytes4 interfaceId) override external pure returns (bool) {... */
+    tag_2:
+        callvalue
+        dup1
+        iszero
+    tag_6
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_6:
+        pop
+    tag_7
+        0x04
+        dup1
+        calldatasize
+        sub
+        0x20
+        dup2
+        lt
+        iszero
+    tag_8
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_8:
+        pop
+        calldataload
+        0xffffffff00000000000000000000000000000000000000000000000000000000
+        and
+    tag_9
+        jump	// in
+    tag_7:
+        0x40
+        dup1
+        mload
+        swap2
+        iszero
+        iszero
+        dup3
+        mstore
+        mload
+        swap1
+        dup2
+        swap1
+        sub
+        0x20
+        add
+        swap1
+        return
+            /* "src/deposit.sol":5992:8742  function deposit(... */
+    tag_3:
+    tag_10
+        0x04
+        dup1
+        calldatasize
+        sub
+        0x80
+        dup2
+        lt
+        iszero
+    tag_11
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_11:
+        dup2            // [ 0x04, leng -0x04, 0x04, 0x01, tag_10, selc ]
+        add             // [ leng, 0x04, t_10, selc ]
+        swap1           // [ 0x04, leng, t_10, selc ]
+        0x20            // [ 0x20, 0x04, leng, t_10, selc ]
+        dup2            // [ 0x04, 0x20, 0x04, leng, t_10, selc ]
+        add             // [ 0x24, 0x04, leng, t_10, selc ]
+        dup2            // [ 0x04, 0x24, 0x04, leng, t_10, selc ]
+        calldataload    // [ 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        0x0100000000    // [ 0x0100000000, 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        dup2            // [ 0x80, 0x0100000000, 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        gt              // [ 0x00, 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        iszero          // [ 0x01, 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+    tag_12            
+        jumpi           // [ tag_12, 0x01, 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        0x00
+        dup1
+        revert
+    tag_12:             // [ 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        dup3            // [ 0x04, 0x80 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        add             // [ 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        dup4            // [ leng, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        0x20            // [ 0x20, leng, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        dup3            // [ 0x84 (ptr), 0x20, leng, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        add             // [ 0xa4 (ptr), leng, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        gt              // [ 0x00, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        iszero          // [ 0x01, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+    tag_13              
+        jumpi           // [tag_13, 0x01, 0x84 (ptr), 0x24, 0x04, leng, t_10, selc ]
+        0x00
+        dup1
+        revert
+    tag_13:             // [ 0x84, 0x24, 0x04, leng, t_10, selc ]
+        dup1            // [ 0x84, 0x84, 0x24, 0x04, leng, t_10, selc ]
+        calldataload    // [ 0x30, 0x84, 0x24, 0x04, leng, t_10, selc ]
+        swap1           // [ 0x84, 0x30, 0x24, 0x04, leng, t_10, selc ]
+        0x20            // [ 0x20, 0x84, 0x30, 0x24, 0x04, leng, t_10, selc ]
+        add             // [ 0xa4, 0x30, 0x24, 0x04, leng, t_10, selc ]
+        swap2           // [ 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        dup5            // [ leng, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        0x01            // [ 0x01, leng, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        dup4            // [ 0x30, 0x01, leng, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        mul             // [ 0x30, leng, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        dup5            // [ 0xa4, 0x30, leng, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        add      //???? // [ 0xd4, leng, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        gt       //why? // [ 0x00, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        0x0100000000    // [ 0x0100000000, 0x00, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        dup4            // [ 0x30, 0x0100000000, 0x00, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        gt              // [ 0x00, 0x00, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        or              // [ 0x00, 0x00, 0x24, 0x30, 0xa4, 0x04, leng, t_10, selc ]
+        iszero
+    tag_14
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_14:
+        swap2
+        swap4
+        swap1
+        swap3
+        swap1
+        swap2
+        0x20
+        dup2
+        add
+        swap1
+        calldataload
+        0x0100000000
+        dup2
+        gt
+        iszero
+    tag_15
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_15:
+        dup3
+        add
+        dup4
+        0x20
+        dup3
+        add
+        gt
+        iszero
+    tag_16
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_16:
+        dup1
+        calldataload
+        swap1
+        0x20
+        add
+        swap2
+        dup5
+        0x01
+        dup4
+        mul
+        dup5
+        add
+        gt
+        0x0100000000
+        dup4
+        gt
+        or
+        iszero
+    tag_17
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_17:
+        swap2
+        swap4
+        swap1
+        swap3
+        swap1
+        swap2
+        0x20
+        dup2
+        add
+        swap1
+        calldataload
+        0x0100000000
+        dup2
+        gt
+        iszero
+    tag_18
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_18:
+        dup3
+        add
+        dup4
+        0x20
+        dup3
+        add
+        gt
+        iszero
+    tag_19
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_19:
+        dup1
+        calldataload
+        swap1
+        0x20
+        add
+        swap2
+        dup5
+        0x01
+        dup4
+        mul
+        dup5
+        add
+        gt
+        0x0100000000
+        dup4
+        gt
+        or
+        iszero
+    tag_20
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_20:
+        swap2
+        swap4
+        pop
+        swap2
+        pop
+        calldataload
+    tag_21
+        jump	// in
+    tag_10:
+        stop
+            /* "src/deposit.sol":5845:5986  function get_deposit_count() override external view returns (bytes memory) {... */
+    tag_4:
+        callvalue
+        dup1
+        iszero
+    tag_22
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_22:
+        pop
+    tag_23
+    tag_24
+        jump	// in
+    tag_23:
+        0x40
+        dup1
+        mload
+        0x20
+        dup1
+        dup3
+        mstore
+        dup4
+        mload
+        dup2
+        dup4
+        add
+        mstore
+        dup4
+        mload
+        swap2
+        swap3
+        dup4
+        swap3
+        swap1
+        dup4
+        add
+        swap2
+        dup6
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+        0x00
+    tag_25:
+        dup4
+        dup2
+        lt
+        iszero
+    tag_27
+        jumpi
+        dup2
+        dup2
+        add
+        mload
+        dup4
+        dup3
+        add
+        mstore
+        0x20
+        add
+        tag_25
+        jump
+    tag_27:
+        pop
+        pop
+        pop
+        pop
+        swap1
+        pop
+        swap1
+        dup2
+        add
+        swap1
+        0x1f
+        and
+        dup1
+        iszero
+    tag_28
+        jumpi
+        dup1
+        dup3
+        sub
+        dup1
+        mload
+        0x01
+        dup4
+        0x20
+        sub
+        0x0100
+        exp
+        sub
+        not
+        and
+        dup2
+        mstore
+        0x20
+        add
+        swap2
+        pop
+    tag_28:
+        pop
+        swap3
+        pop
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        return
+            /* "src/deposit.sol":5247:5839  function get_deposit_root() override external view returns (bytes32) {... */
+    tag_5:
+        callvalue
+        dup1
+        iszero
+    tag_29
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_29:
+        pop
+    tag_30
+    tag_31
+        jump	// in
+    tag_30:
+        0x40
+        dup1
+        mload
+        swap2
+        dup3
+        mstore
+        mload
+        swap1
+        dup2
+        swap1
+        sub
+        0x20
+        add
+        swap1
+        return
+            /* "src/deposit.sol":8748:8949  function supportsInterface(bytes4 interfaceId) override external pure returns (bool) {... */
+    tag_9:
+            /* "src/deposit.sol":8827:8831  bool */
+        0x00
+            /* "src/deposit.sol":8850:8889  interfaceId == type(ERC165).interfaceId */
+        0xffffffff00000000000000000000000000000000000000000000000000000000
+        dup3
+        and
+            /* "src/deposit.sol":8865:8889  type(ERC165).interfaceId */
+        0x01ffc9a700000000000000000000000000000000000000000000000000000000
+            /* "src/deposit.sol":8850:8889  interfaceId == type(ERC165).interfaceId */
+        eq
+        dup1
+            /* "src/deposit.sol":8850:8942  interfaceId == type(ERC165).interfaceId || interfaceId == type(IDepositContract).interfaceId */
+    tag_33
+        jumpi
+        pop
+            /* "src/deposit.sol":8893:8942  interfaceId == type(IDepositContract).interfaceId */
+        0xffffffff00000000000000000000000000000000000000000000000000000000
+        dup3
+        and
+            /* "src/deposit.sol":8908:8942  type(IDepositContract).interfaceId */
+        0x8564090700000000000000000000000000000000000000000000000000000000
+            /* "src/deposit.sol":8893:8942  interfaceId == type(IDepositContract).interfaceId */
+        eq
+            /* "src/deposit.sol":8850:8942  interfaceId == type(ERC165).interfaceId || interfaceId == type(IDepositContract).interfaceId */
+    tag_33:
+            /* "src/deposit.sol":8843:8942  return interfaceId == type(ERC165).interfaceId || interfaceId == type(IDepositContract).interfaceId */
+        swap3
+            /* "src/deposit.sol":8748:8949  function supportsInterface(bytes4 interfaceId) override external pure returns (bool) {... */
+        swap2
+        pop
+        pop
+        jump	// out
+            /* "src/deposit.sol":5992:8742  function deposit(... */
+    tag_21:
+            /* "src/deposit.sol":6291:6293  48 */
+        0x30
+            /* "src/deposit.sol":6274:6293  pubkey.length == 48 */
+        dup7
+        eq
+            /* "src/deposit.sol":6266:6336  require(pubkey.length == 48, "DepositContract: invalid pubkey length") */
+    tag_35
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x26
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0xc3b50b094eada99b5a9dfa8cfadfa82355edd40e0591c544071d0112172c4c5e
+        0x26
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_35:
+            /* "src/deposit.sol":6387:6389  32 */
+        0x20
+            /* "src/deposit.sol":6354:6389  withdrawal_credentials.length == 32 */
+        dup5
+        eq
+            /* "src/deposit.sol":6346:6448  require(withdrawal_credentials.length == 32, "DepositContract: invalid withdrawal_credentials length") */
+    tag_36
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x36
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0x747182c86d19950fc1e3554e7b3e3a1972fcfdcf01419aa5598a57f4869840e0
+        0x36
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_36:
+            /* "src/deposit.sol":6486:6488  96 */
+        0x60
+            /* "src/deposit.sol":6466:6488  signature.length == 96 */
+        dup3
+        eq
+            /* "src/deposit.sol":6458:6534  require(signature.length == 96, "DepositContract: invalid signature length") */
+    tag_37
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x29
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0xe15de1a983e2181dc403952307f19cbe1ac366f85accb46ba7ec34e71736287b
+        0x29
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_37:
+            /* "src/deposit.sol":6598:6605  1 ether */
+        0x0de0b6b3a7640000
+            /* "src/deposit.sol":6585:6594  msg.value */
+        callvalue
+            /* "src/deposit.sol":6585:6605  msg.value >= 1 ether */
+        lt
+        iszero
+            /* "src/deposit.sol":6577:6648  require(msg.value >= 1 ether, "DepositContract: deposit value too low") */
+    tag_38
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x26
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0xd4d9a14975cc31a7dc18afc82ee6e59efa15377b990098eeaab4cc403f9d1217
+        0x26
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_38:
+            /* "src/deposit.sol":6678:6684  1 gwei */
+        0x3b9aca00
+            /* "src/deposit.sol":6666:6675  msg.value */
+        callvalue
+            /* "src/deposit.sol":6666:6684  msg.value % 1 gwei */
+        mod
+            /* "src/deposit.sol":6666:6689  msg.value % 1 gwei == 0 */
+        iszero
+            /* "src/deposit.sol":6658:6745  require(msg.value % 1 gwei == 0, "DepositContract: deposit value not multiple of gwei") */
+    tag_40
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x33
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0x7db03c60fbfd1382397614fc537e65f67f687dbb18307bed297bda7f864590e0
+        0x33
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_40:
+            /* "src/deposit.sol":6789:6795  1 gwei */
+        0x3b9aca00
+            /* "src/deposit.sol":6777:6786  msg.value */
+        callvalue
+            /* "src/deposit.sol":6777:6795  msg.value / 1 gwei */
+        div
+            /* "src/deposit.sol":6831:6847  type(uint64).max */
+        0xffffffffffffffff
+            /* "src/deposit.sol":6813:6847  deposit_amount <= type(uint64).max */
+        dup2
+        gt
+        iszero
+            /* "src/deposit.sol":6805:6891  require(deposit_amount <= type(uint64).max, "DepositContract: deposit value too high") */
+    tag_42
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x27
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0xc445cee017c8884423c583c4e1697a8e774197f1748cc887aa73775ef891882f
+        0x27
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_42:
+            /* "src/deposit.sol":6937:6956  bytes memory amount */
+        0x60
+            /* "src/deposit.sol":6959:7002  to_little_endian_64(uint64(deposit_amount)) */
+    tag_43
+            /* "src/deposit.sol":6986:7000  deposit_amount */
+        dup3
+            /* "src/deposit.sol":6959:6978  to_little_endian_64 */
+    tag_44
+            /* "src/deposit.sol":6959:7002  to_little_endian_64(uint64(deposit_amount)) */
+        jump	// in
+    tag_43:
+            /* "src/deposit.sol":6937:7002  bytes memory amount = to_little_endian_64(uint64(deposit_amount)) */
+        swap1
+        pop
+            /* "src/deposit.sol":7017:7194  DepositEvent(... */
+        0x649bbc62d0e31342afea4e5cd82d4049e7e1ee912fc0889aa790803be39038c5
+            /* "src/deposit.sol":7043:7049  pubkey */
+        dup10
+        dup10
+            /* "src/deposit.sol":7063:7085  withdrawal_credentials */
+        dup10
+        dup10
+            /* "src/deposit.sol":7099:7105  amount */
+        dup6
+            /* "src/deposit.sol":7119:7128  signature */
+        dup11
+        dup11
+            /* "src/deposit.sol":7142:7184  to_little_endian_64(uint64(deposit_count)) */
+    tag_45
+            /* "src/deposit.sol":7169:7182  deposit_count */
+        0x20
+        sload
+            /* "src/deposit.sol":7142:7161  to_little_endian_64 */
+    tag_44
+            /* "src/deposit.sol":7142:7184  to_little_endian_64(uint64(deposit_count)) */
+        jump	// in
+    tag_45:
+            /* "src/deposit.sol":7017:7194  DepositEvent(... */
+        0x40
+        dup1
+        mload
+        0xa0
+        dup1
+        dup3
+        mstore
+        dup2
+        add
+        dup10
+        swap1
+        mstore
+        swap1
+        dup2
+        swap1
+        0x20
+        dup3
+        add
+        swap1
+        dup3
+        add
+        0x60
+        dup4
+        add
+        0x80
+        dup5
+        add
+        0xc0
+        dup6
+        add
+        dup15
+        dup15
+        dup1
+        dup3
+        dup5
+        calldatacopy
+        0x00
+        dup4
+        dup3
+        add
+        mstore
+        0x1f
+        add
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        and
+        swap1
+        swap2
+        add
+        dup8
+        dup2
+        sub
+        dup7
+        mstore
+        dup13
+        dup2
+        mstore
+        0x20
+        add
+        swap1
+        pop
+        dup13
+        dup13
+        dup1
+        dup3
+        dup5
+        calldatacopy
+        0x00
+        dup4
+        dup3
+        add
+        dup2
+        swap1
+        mstore
+        0x1f
+        swap1
+        swap2
+        add
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        and
+        swap1
+        swap3
+        add
+        dup9
+        dup2
+        sub
+        dup7
+        mstore
+        dup13
+        mload
+        dup2
+        mstore
+        dup13
+        mload
+        0x20
+        swap2
+        dup3
+        add
+        swap4
+        swap2
+        dup15
+        add
+        swap3
+        pop
+        swap1
+        dup2
+        swap1
+        dup5
+        swap1
+        dup5
+        swap1
+    tag_46:
+        dup4
+        dup2
+        lt
+        iszero
+    tag_48
+        jumpi
+        dup2
+        dup2
+        add
+        mload
+        dup4
+        dup3
+        add
+        mstore
+        0x20
+        add
+        tag_46
+        jump
+    tag_48:
+        pop
+        pop
+        pop
+        pop
+        swap1
+        pop
+        swap1
+        dup2
+        add
+        swap1
+        0x1f
+        and
+        dup1
+        iszero
+    tag_49
+        jumpi
+        dup1
+        dup3
+        sub
+        dup1
+        mload
+        0x01
+        dup4
+        0x20
+        sub
+        0x0100
+        exp
+        sub
+        not
+        and
+        dup2
+        mstore
+        0x20
+        add
+        swap2
+        pop
+    tag_49:
+        pop
+        dup7
+        dup2
+        sub
+        dup4
+        mstore
+        dup9
+        dup2
+        mstore
+        0x20
+        add
+        dup10
+        dup10
+        dup1
+        dup3
+        dup5
+        calldatacopy
+        0x00
+        dup4
+        dup3
+        add
+        dup2
+        swap1
+        mstore
+        0x1f
+        swap1
+        swap2
+        add
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        and
+        swap1
+        swap3
+        add
+        dup9
+        dup2
+        sub
+        dup5
+        mstore
+        dup10
+        mload
+        dup2
+        mstore
+        dup10
+        mload
+        0x20
+        swap2
+        dup3
+        add
+        swap4
+        swap2
+        dup12
+        add
+        swap3
+        pop
+        swap1
+        dup2
+        swap1
+        dup5
+        swap1
+        dup5
+        swap1
+    tag_50:
+        dup4
+        dup2
+        lt
+        iszero
+    tag_52
+        jumpi
+        dup2
+        dup2
+        add
+        mload
+        dup4
+        dup3
+        add
+        mstore
+        0x20
+        add
+        tag_50
+        jump
+    tag_52:
+        pop
+        pop
+        pop
+        pop
+        swap1
+        pop
+        swap1
+        dup2
+        add
+        swap1
+        0x1f
+        and
+        dup1
+        iszero
+    tag_53
+        jumpi
+        dup1
+        dup3
+        sub
+        dup1
+        mload
+        0x01
+        dup4
+        0x20
+        sub
+        0x0100
+        exp
+        sub
+        not
+        and
+        dup2
+        mstore
+        0x20
+        add
+        swap2
+        pop
+    tag_53:
+        pop
+        swap14
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        log1
+            /* "src/deposit.sol":7273:7292  bytes32 pubkey_root */
+        0x00
+            /* "src/deposit.sol":7295:7339  sha256(abi.encodePacked(pubkey, bytes16(0))) */
+        0x02
+            /* "src/deposit.sol":7319:7325  pubkey */
+        dup11
+        dup11
+            /* "src/deposit.sol":7335:7336  0 */
+        0x00
+            /* "src/deposit.sol":7327:7337  bytes16(0) */
+        0x80
+        shl
+            /* "src/deposit.sol":7302:7338  abi.encodePacked(pubkey, bytes16(0)) */
+        0x40
+        mload
+        0x20
+        add
+        dup1
+        dup5
+        dup5
+        dup1
+        dup3
+        dup5
+        calldatacopy
+        0xffffffffffffffffffffffffffffffff00000000000000000000000000000000
+        swap1
+        swap5
+        and
+        swap2
+        swap1
+        swap4
+        add
+        swap1
+        dup2
+        mstore
+        0x40
+        dup1
+        mload
+        0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0
+        dup2
+        dup5
+        sub
+        add
+        dup2
+        mstore
+        0x10
+        swap1
+        swap3
+        add
+        swap1
+        dup2
+        swap1
+        mstore
+            /* "src/deposit.sol":7295:7339  sha256(abi.encodePacked(pubkey, bytes16(0))) */
+        dup2
+        mload
+            /* "src/deposit.sol":7302:7338  abi.encodePacked(pubkey, bytes16(0)) */
+        swap2
+        swap6
+        pop
+        swap4
+        pop
+        dup4
+        swap3
+        pop
+        0x20
+            /* "src/deposit.sol":7295:7339  sha256(abi.encodePacked(pubkey, bytes16(0))) */
+        dup6
+        add
+        swap2
+        pop
+        dup1
+            /* "src/deposit.sol":7302:7338  abi.encodePacked(pubkey, bytes16(0)) */
+        dup4
+            /* "src/deposit.sol":7295:7339  sha256(abi.encodePacked(pubkey, bytes16(0))) */
+        dup4
+    tag_54:
+        0x20
+        dup4
+        lt
+    tag_56
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_54
+        jump
+    tag_56:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_58
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_58:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_59
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_59:
+        pop
+        mload
+        swap1
+        pop
+            /* "src/deposit.sol":7349:7371  bytes32 signature_root */
+        0x00
+            /* "src/deposit.sol":7374:7528  sha256(abi.encodePacked(... */
+        0x02
+        dup1
+            /* "src/deposit.sol":7435:7449  signature[:64] */
+    tag_60
+            /* "src/deposit.sol":7446:7448  64 */
+        0x40
+            /* "src/deposit.sol":7349:7371  bytes32 signature_root */
+        dup5
+            /* "src/deposit.sol":7435:7444  signature */
+        dup11
+        dup13
+            /* "src/deposit.sol":7435:7449  signature[:64] */
+    tag_61
+        jump	// in
+    tag_60:
+            /* "src/deposit.sol":7418:7450  abi.encodePacked(signature[:64]) */
+        0x40
+        mload
+        0x20
+        add
+        dup1
+        dup4
+        dup4
+        dup1
+        dup3
+        dup5
+        calldatacopy
+        dup1
+        dup4
+        add
+        swap3
+        pop
+        pop
+        pop
+        swap3
+        pop
+        pop
+        pop
+        0x40
+        mload
+        0x20
+        dup2
+        dup4
+        sub
+        sub
+        dup2
+        mstore
+        swap1
+        0x40
+        mstore
+            /* "src/deposit.sol":7411:7451  sha256(abi.encodePacked(signature[:64])) */
+        0x40
+        mload
+        dup1
+        dup3
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_62:
+        0x20
+        dup4
+        lt
+    tag_64
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_62
+        jump
+    tag_64:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_66
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_66:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_67
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_67:
+        pop
+        mload
+            /* "src/deposit.sol":7465:7517  sha256(abi.encodePacked(signature[64:], bytes32(0))) */
+        0x02
+            /* "src/deposit.sol":7489:7503  signature[64:] */
+    tag_68
+            /* "src/deposit.sol":7489:7498  signature */
+        dup10
+            /* "src/deposit.sol":7499:7501  64 */
+        0x40
+            /* "src/deposit.sol":7489:7498  signature */
+        dup2
+        dup14
+            /* "src/deposit.sol":7489:7503  signature[64:] */
+    tag_61
+        jump	// in
+    tag_68:
+            /* "src/deposit.sol":7472:7516  abi.encodePacked(signature[64:], bytes32(0)) */
+        0x40
+        mload
+            /* "src/deposit.sol":7513:7514  0 */
+        0x00
+        swap1
+            /* "src/deposit.sol":7472:7516  abi.encodePacked(signature[64:], bytes32(0)) */
+        0x20
+        add
+        dup1
+        dup5
+        dup5
+        dup1
+        dup3
+        dup5
+        calldatacopy
+        swap2
+        swap1
+        swap2
+        add
+        swap3
+        dup4
+        mstore
+        pop
+        pop
+        0x40
+        dup1
+        mload
+        dup1
+        dup4
+        sub
+        dup2
+        mstore
+        0x20
+        swap3
+        dup4
+        add
+        swap2
+        dup3
+        swap1
+        mstore
+            /* "src/deposit.sol":7465:7517  sha256(abi.encodePacked(signature[64:], bytes32(0))) */
+        dup1
+        mload
+            /* "src/deposit.sol":7472:7516  abi.encodePacked(signature[64:], bytes32(0)) */
+        swap1
+        swap5
+        pop
+        swap1
+        swap3
+        pop
+        dup3
+        swap2
+            /* "src/deposit.sol":7465:7517  sha256(abi.encodePacked(signature[64:], bytes32(0))) */
+        dup5
+        add
+        swap1
+        dup1
+            /* "src/deposit.sol":7472:7516  abi.encodePacked(signature[64:], bytes32(0)) */
+        dup4
+            /* "src/deposit.sol":7465:7517  sha256(abi.encodePacked(signature[64:], bytes32(0))) */
+        dup4
+    tag_69:
+        0x20
+        dup4
+        lt
+    tag_71
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_69
+        jump
+    tag_71:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_73
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_73:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_74
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_74:
+        pop
+        mload
+            /* "src/deposit.sol":7381:7527  abi.encodePacked(... */
+        0x40
+        dup1
+        mload
+            /* "src/deposit.sol":7465:7517  sha256(abi.encodePacked(signature[64:], bytes32(0))) */
+        0x20
+            /* "src/deposit.sol":7381:7527  abi.encodePacked(... */
+        dup2
+        dup2
+        add
+        swap5
+        swap1
+        swap5
+        mstore
+        dup1
+        dup3
+        add
+        swap3
+        swap1
+        swap3
+        mstore
+        dup1
+        mload
+        dup1
+        dup4
+        sub
+        dup3
+        add
+        dup2
+        mstore
+        0x60
+        swap1
+        swap3
+        add
+        swap1
+        dup2
+        swap1
+        mstore
+            /* "src/deposit.sol":7374:7528  sha256(abi.encodePacked(... */
+        dup2
+        mload
+            /* "src/deposit.sol":7381:7527  abi.encodePacked(... */
+        swap2
+        swap3
+        swap1
+        swap2
+        dup3
+        swap2
+            /* "src/deposit.sol":7374:7528  sha256(abi.encodePacked(... */
+        dup5
+        add
+        swap1
+        dup1
+            /* "src/deposit.sol":7381:7527  abi.encodePacked(... */
+        dup4
+            /* "src/deposit.sol":7374:7528  sha256(abi.encodePacked(... */
+        dup4
+    tag_75:
+        0x20
+        dup4
+        lt
+    tag_77
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_75
+        jump
+    tag_77:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_79
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_79:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_80
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_80:
+        pop
+        mload
+            /* "src/deposit.sol":7597:7650  abi.encodePacked(pubkey_root, withdrawal_credentials) */
+        0x40
+        dup1
+        mload
+            /* "src/deposit.sol":7374:7528  sha256(abi.encodePacked(... */
+        0x20
+            /* "src/deposit.sol":7597:7650  abi.encodePacked(pubkey_root, withdrawal_credentials) */
+        dup2
+        add
+        dup6
+        dup2
+        mstore
+            /* "src/deposit.sol":7374:7528  sha256(abi.encodePacked(... */
+        swap3
+        swap4
+        pop
+            /* "src/deposit.sol":7538:7550  bytes32 node */
+        0x00
+        swap3
+            /* "src/deposit.sol":7553:7736  sha256(abi.encodePacked(... */
+        0x02
+        swap3
+        dup4
+        swap3
+            /* "src/deposit.sol":7614:7625  pubkey_root */
+        dup8
+        swap3
+            /* "src/deposit.sol":7627:7649  withdrawal_credentials */
+        dup16
+        swap3
+        dup16
+        swap3
+            /* "src/deposit.sol":7597:7650  abi.encodePacked(pubkey_root, withdrawal_credentials) */
+        add
+            /* "src/deposit.sol":7627:7649  withdrawal_credentials */
+        dup4
+        dup4
+        dup1
+        dup3
+            /* "src/deposit.sol":7597:7650  abi.encodePacked(pubkey_root, withdrawal_credentials) */
+        dup5
+        calldatacopy
+        dup1
+        dup4
+        add
+        swap3
+        pop
+        pop
+        pop
+        swap4
+        pop
+        pop
+        pop
+        pop
+        0x40
+        mload
+        0x20
+        dup2
+        dup4
+        sub
+        sub
+        dup2
+        mstore
+        swap1
+        0x40
+        mstore
+            /* "src/deposit.sol":7590:7651  sha256(abi.encodePacked(pubkey_root, withdrawal_credentials)) */
+        0x40
+        mload
+        dup1
+        dup3
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_81:
+        0x20
+        dup4
+        lt
+    tag_83
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_81
+        jump
+    tag_83:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_85
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_85:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_86
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_86:
+        pop
+        mload
+            /* "src/deposit.sol":7697:7707  bytes24(0) */
+        0x40
+            /* "src/deposit.sol":7672:7724  abi.encodePacked(amount, bytes24(0), signature_root) */
+        mload
+        dup7
+        mload
+            /* "src/deposit.sol":7665:7725  sha256(abi.encodePacked(amount, bytes24(0), signature_root)) */
+        0x02
+        swap2
+            /* "src/deposit.sol":7689:7695  amount */
+        dup9
+        swap2
+            /* "src/deposit.sol":7705:7706  0 */
+        0x00
+        swap2
+            /* "src/deposit.sol":7709:7723  signature_root */
+        dup9
+        swap2
+            /* "src/deposit.sol":7590:7651  sha256(abi.encodePacked(pubkey_root, withdrawal_credentials)) */
+        0x20
+            /* "src/deposit.sol":7672:7724  abi.encodePacked(amount, bytes24(0), signature_root) */
+        swap2
+        dup3
+        add
+        swap2
+        dup3
+        swap2
+        swap1
+        dup7
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_87:
+        0x20
+        dup4
+        lt
+    tag_89
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_87
+        jump
+    tag_89:
+        0x01
+        dup4
+        0x20
+        sub
+        0x0100
+        exp
+        sub
+        dup1
+        not
+        dup3
+        mload
+        and
+        dup2
+        dup5
+        mload
+        and
+        dup1
+        dup3
+        or
+        dup6
+        mstore
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        swap1
+        pop
+        add
+        dup4
+        0xffffffffffffffff
+        not
+        and
+        0xffffffffffffffff
+        not
+        and
+        dup2
+        mstore
+        0x18
+        add
+        dup3
+        dup2
+        mstore
+        0x20
+        add
+        swap4
+        pop
+        pop
+        pop
+        pop
+        0x40
+        mload
+        0x20
+        dup2
+        dup4
+        sub
+        sub
+        dup2
+        mstore
+        swap1
+        0x40
+        mstore
+            /* "src/deposit.sol":7665:7725  sha256(abi.encodePacked(amount, bytes24(0), signature_root)) */
+        0x40
+        mload
+        dup1
+        dup3
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_90:
+        0x20
+        dup4
+        lt
+    tag_92
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_90
+        jump
+    tag_92:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_94
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_94:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_95
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_95:
+        pop
+        mload
+            /* "src/deposit.sol":7560:7735  abi.encodePacked(... */
+        0x40
+        dup1
+        mload
+            /* "src/deposit.sol":7665:7725  sha256(abi.encodePacked(amount, bytes24(0), signature_root)) */
+        0x20
+            /* "src/deposit.sol":7560:7735  abi.encodePacked(... */
+        dup2
+        dup2
+        add
+        swap5
+        swap1
+        swap5
+        mstore
+        dup1
+        dup3
+        add
+        swap3
+        swap1
+        swap3
+        mstore
+        dup1
+        mload
+        dup1
+        dup4
+        sub
+        dup3
+        add
+        dup2
+        mstore
+        0x60
+        swap1
+        swap3
+        add
+        swap1
+        dup2
+        swap1
+        mstore
+            /* "src/deposit.sol":7553:7736  sha256(abi.encodePacked(... */
+        dup2
+        mload
+            /* "src/deposit.sol":7560:7735  abi.encodePacked(... */
+        swap2
+        swap3
+        swap1
+        swap2
+        dup3
+        swap2
+            /* "src/deposit.sol":7553:7736  sha256(abi.encodePacked(... */
+        dup5
+        add
+        swap1
+        dup1
+            /* "src/deposit.sol":7560:7735  abi.encodePacked(... */
+        dup4
+            /* "src/deposit.sol":7553:7736  sha256(abi.encodePacked(... */
+        dup4
+    tag_96:
+        0x20
+        dup4
+        lt
+    tag_98
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_96
+        jump
+    tag_98:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_100
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_100:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_101
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_101:
+        pop
+        mload
+        swap1
+        pop
+            /* "src/deposit.sol":7820:7845  node == deposit_data_root */
+        dup6
+        dup2
+        eq
+            /* "src/deposit.sol":7812:7934  require(node == deposit_data_root, "DepositContract: reconstructed DepositData does not match supplied deposit_data_root") */
+    tag_102
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x54
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0x18a67971568b2dbad4353dfdc385098cc004c2a5070a439e010bb919d851babb
+        0x54
+        swap2
+        codecopy
+        0x60
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_102:
+            /* "src/deposit.sol":4687:4689  32 */
+        0x20
+            /* "src/deposit.sol":8044:8057  deposit_count */
+        sload
+            /* "src/deposit.sol":4798:4832  2**DEPOSIT_CONTRACT_TREE_DEPTH - 1 */
+        0xffffffff
+        gt
+            /* "src/deposit.sol":8036:8115  require(deposit_count < MAX_DEPOSIT_COUNT, "DepositContract: merkle tree full") */
+    tag_103
+        jumpi
+        0x40
+        mload
+        0x08c379a000000000000000000000000000000000000000000000000000000000
+        dup2
+        mstore
+        0x04
+        add
+        dup1
+        dup1
+        0x20
+        add
+        dup3
+        dup2
+        sub
+        dup3
+        mstore
+        0x21
+        dup2
+        mstore
+        0x20
+        add
+        dup1
+        0x122aa4bcac592fd535cb6d2558ebbf28083cd32a46ad577d847ea313cd3a6be7
+        0x21
+        swap2
+        codecopy
+        0x40
+        add
+        swap2
+        pop
+        pop
+        0x40
+        mload
+        dup1
+        swap2
+        sub
+        swap1
+        revert
+    tag_103:
+            /* "src/deposit.sol":8206:8219  deposit_count */
+        0x20
+            /* "src/deposit.sol":8206:8224  deposit_count += 1 */
+        dup1
+        sload
+            /* "src/deposit.sol":8223:8224  1 */
+        0x01
+            /* "src/deposit.sol":8206:8224  deposit_count += 1 */
+        add
+        swap1
+        dup2
+        swap1
+        sstore
+            /* "src/deposit.sol":8206:8219  deposit_count */
+        0x00
+            /* "src/deposit.sol":8269:8552  for (uint height = 0; height < DEPOSIT_CONTRACT_TREE_DEPTH; height++) {... */
+    tag_104:
+            /* "src/deposit.sol":4687:4689  32 */
+        0x20
+            /* "src/deposit.sol":8291:8297  height */
+        dup2
+            /* "src/deposit.sol":8291:8327  height < DEPOSIT_CONTRACT_TREE_DEPTH */
+        lt
+            /* "src/deposit.sol":8269:8552  for (uint height = 0; height < DEPOSIT_CONTRACT_TREE_DEPTH; height++) {... */
+        iszero
+    tag_105
+        jumpi
+            /* "src/deposit.sol":8358:8362  size */
+        dup2
+            /* "src/deposit.sol":8365:8366  1 */
+        0x01
+            /* "src/deposit.sol":8358:8366  size & 1 */
+        and
+            /* "src/deposit.sol":8371:8372  1 */
+        0x01
+            /* "src/deposit.sol":8357:8372  (size & 1) == 1 */
+        eq
+            /* "src/deposit.sol":8353:8452  if ((size & 1) == 1) {... */
+        iszero
+    tag_107
+        jumpi
+            /* "src/deposit.sol":8409:8413  node */
+        dup3
+            /* "src/deposit.sol":8392:8398  branch */
+        0x00
+            /* "src/deposit.sol":8399:8405  height */
+        dup3
+            /* "src/deposit.sol":8392:8406  branch[height] */
+        0x20
+        dup2
+        lt
+    tag_108
+        jumpi
+        invalid
+    tag_108:
+        add
+            /* "src/deposit.sol":8392:8413  branch[height] = node */
+        sstore
+        pop
+            /* "src/deposit.sol":8431:8438  return; */
+    tag_34
+        swap6
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        jump
+            /* "src/deposit.sol":8353:8452  if ((size & 1) == 1) {... */
+    tag_107:
+            /* "src/deposit.sol":8472:8518  sha256(abi.encodePacked(branch[height], node)) */
+        0x02
+            /* "src/deposit.sol":8496:8502  branch */
+        0x00
+            /* "src/deposit.sol":8503:8509  height */
+        dup3
+            /* "src/deposit.sol":8496:8510  branch[height] */
+        0x20
+        dup2
+        lt
+    tag_110
+        jumpi
+        invalid
+    tag_110:
+        add
+        sload
+            /* "src/deposit.sol":8512:8516  node */
+        dup5
+            /* "src/deposit.sol":8479:8517  abi.encodePacked(branch[height], node) */
+        0x40
+        mload
+        0x20
+        add
+        dup1
+        dup4
+        dup2
+        mstore
+        0x20
+        add
+        dup3
+        dup2
+        mstore
+        0x20
+        add
+        swap3
+        pop
+        pop
+        pop
+        0x40
+        mload
+        0x20
+        dup2
+        dup4
+        sub
+        sub
+        dup2
+        mstore
+        swap1
+        0x40
+        mstore
+            /* "src/deposit.sol":8472:8518  sha256(abi.encodePacked(branch[height], node)) */
+        0x40
+        mload
+        dup1
+        dup3
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_112:
+        0x20
+        dup4
+        lt
+    tag_114
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_112
+        jump
+    tag_114:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_116
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_116:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_117
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_117:
+        pop
+        mload
+        swap3
+        pop
+            /* "src/deposit.sol":8540:8541  2 */
+        0x02
+            /* "src/deposit.sol":8532:8541  size /= 2 */
+        dup3
+        div
+        swap2
+        pop
+            /* "src/deposit.sol":8329:8337  height++ */
+        0x01
+        add
+            /* "src/deposit.sol":8269:8552  for (uint height = 0; height < DEPOSIT_CONTRACT_TREE_DEPTH; height++) {... */
+        tag_104
+        jump
+    tag_105:
+        pop
+            /* "src/deposit.sol":8722:8735  assert(false) */
+        invalid
+            /* "src/deposit.sol":5992:8742  function deposit(... */
+    tag_34:
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        pop
+        jump	// out
+            /* "src/deposit.sol":5845:5986  function get_deposit_count() override external view returns (bytes memory) {... */
+    tag_24:
+            /* "src/deposit.sol":5906:5918  bytes memory */
+        0x60
+            /* "src/deposit.sol":5937:5979  to_little_endian_64(uint64(deposit_count)) */
+    tag_121
+            /* "src/deposit.sol":5964:5977  deposit_count */
+        0x20
+        sload
+            /* "src/deposit.sol":5937:5956  to_little_endian_64 */
+    tag_44
+            /* "src/deposit.sol":5937:5979  to_little_endian_64(uint64(deposit_count)) */
+        jump	// in
+    tag_121:
+            /* "src/deposit.sol":5930:5979  return to_little_endian_64(uint64(deposit_count)) */
+        swap1
+        pop
+            /* "src/deposit.sol":5845:5986  function get_deposit_count() override external view returns (bytes memory) {... */
+        swap1
+        jump	// out
+            /* "src/deposit.sol":5247:5839  function get_deposit_root() override external view returns (bytes32) {... */
+    tag_31:
+            /* "src/deposit.sol":5360:5373  deposit_count */
+        0x20
+        sload
+            /* "src/deposit.sol":5307:5314  bytes32 */
+        0x00
+        swap1
+        dup2
+        swap1
+        dup2
+            /* "src/deposit.sol":5383:5684  for (uint height = 0; height < DEPOSIT_CONTRACT_TREE_DEPTH; height++) {... */
+    tag_123:
+            /* "src/deposit.sol":4687:4689  32 */
+        0x20
+            /* "src/deposit.sol":5405:5411  height */
+        dup2
+            /* "src/deposit.sol":5405:5441  height < DEPOSIT_CONTRACT_TREE_DEPTH */
+        lt
+            /* "src/deposit.sol":5383:5684  for (uint height = 0; height < DEPOSIT_CONTRACT_TREE_DEPTH; height++) {... */
+        iszero
+    tag_124
+        jumpi
+            /* "src/deposit.sol":5472:5476  size */
+        dup2
+            /* "src/deposit.sol":5479:5480  1 */
+        0x01
+            /* "src/deposit.sol":5472:5480  size & 1 */
+        and
+            /* "src/deposit.sol":5485:5486  1 */
+        0x01
+            /* "src/deposit.sol":5471:5486  (size & 1) == 1 */
+        eq
+            /* "src/deposit.sol":5467:5650  if ((size & 1) == 1)... */
+        iszero
+    tag_126
+        jumpi
+            /* "src/deposit.sol":5511:5557  sha256(abi.encodePacked(branch[height], node)) */
+        0x02
+            /* "src/deposit.sol":5535:5541  branch */
+        0x00
+            /* "src/deposit.sol":5542:5548  height */
+        dup3
+            /* "src/deposit.sol":5535:5549  branch[height] */
+        0x20
+        dup2
+        lt
+    tag_127
+        jumpi
+        invalid
+    tag_127:
+        add
+        sload
+            /* "src/deposit.sol":5551:5555  node */
+        dup5
+            /* "src/deposit.sol":5518:5556  abi.encodePacked(branch[height], node) */
+        0x40
+        mload
+        0x20
+        add
+        dup1
+        dup4
+        dup2
+        mstore
+        0x20
+        add
+        dup3
+        dup2
+        mstore
+        0x20
+        add
+        swap3
+        pop
+        pop
+        pop
+        0x40
+        mload
+        0x20
+        dup2
+        dup4
+        sub
+        sub
+        dup2
+        mstore
+        swap1
+        0x40
+        mstore
+            /* "src/deposit.sol":5511:5557  sha256(abi.encodePacked(branch[height], node)) */
+        0x40
+        mload
+        dup1
+        dup3
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_129:
+        0x20
+        dup4
+        lt
+    tag_131
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_129
+        jump
+    tag_131:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_133
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_133:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_134
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_134:
+        pop
+        mload
+        swap3
+        pop
+            /* "src/deposit.sol":5467:5650  if ((size & 1) == 1)... */
+        tag_135
+        jump
+    tag_126:
+            /* "src/deposit.sol":5599:5650  sha256(abi.encodePacked(node, zero_hashes[height])) */
+        0x02
+            /* "src/deposit.sol":5623:5627  node */
+        dup4
+            /* "src/deposit.sol":5629:5640  zero_hashes */
+        0x21
+            /* "src/deposit.sol":5641:5647  height */
+        dup4
+            /* "src/deposit.sol":5629:5648  zero_hashes[height] */
+        0x20
+        dup2
+        lt
+    tag_136
+        jumpi
+        invalid
+    tag_136:
+        add
+        sload
+            /* "src/deposit.sol":5606:5649  abi.encodePacked(node, zero_hashes[height]) */
+        0x40
+        mload
+        0x20
+        add
+        dup1
+        dup4
+        dup2
+        mstore
+        0x20
+        add
+        dup3
+        dup2
+        mstore
+        0x20
+        add
+        swap3
+        pop
+        pop
+        pop
+        0x40
+        mload
+        0x20
+        dup2
+        dup4
+        sub
+        sub
+        dup2
+        mstore
+        swap1
+        0x40
+        mstore
+            /* "src/deposit.sol":5599:5650  sha256(abi.encodePacked(node, zero_hashes[height])) */
+        0x40
+        mload
+        dup1
+        dup3
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_138:
+        0x20
+        dup4
+        lt
+    tag_140
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_138
+        jump
+    tag_140:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_142
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_142:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_143
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_143:
+        pop
+        mload
+        swap3
+        pop
+            /* "src/deposit.sol":5467:5650  if ((size & 1) == 1)... */
+    tag_135:
+            /* "src/deposit.sol":5672:5673  2 */
+        0x02
+            /* "src/deposit.sol":5664:5673  size /= 2 */
+        dup3
+        div
+        swap2
+        pop
+            /* "src/deposit.sol":5443:5451  height++ */
+        0x01
+        add
+            /* "src/deposit.sol":5383:5684  for (uint height = 0; height < DEPOSIT_CONTRACT_TREE_DEPTH; height++) {... */
+        tag_123
+        jump
+    tag_124:
+        pop
+            /* "src/deposit.sol":5700:5832  sha256(abi.encodePacked(... */
+        0x02
+            /* "src/deposit.sol":5737:5741  node */
+        dup3
+            /* "src/deposit.sol":5755:5797  to_little_endian_64(uint64(deposit_count)) */
+    tag_145
+            /* "src/deposit.sol":5782:5795  deposit_count */
+        0x20
+        sload
+            /* "src/deposit.sol":5755:5774  to_little_endian_64 */
+    tag_44
+            /* "src/deposit.sol":5755:5797  to_little_endian_64(uint64(deposit_count)) */
+        jump	// in
+    tag_145:
+            /* "src/deposit.sol":5819:5820  0 */
+        0x00
+            /* "src/deposit.sol":5811:5821  bytes24(0) */
+        0x40
+        shl
+            /* "src/deposit.sol":5707:5831  abi.encodePacked(... */
+        0x40
+        mload
+        0x20
+        add
+        dup1
+        dup5
+        dup2
+        mstore
+        0x20
+        add
+        dup4
+        dup1
+        mload
+        swap1
+        0x20
+        add
+        swap1
+        dup1
+        dup4
+        dup4
+    tag_146:
+        0x20
+        dup4
+        lt
+    tag_148
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_146
+        jump
+    tag_148:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffff0000000000000000
+        swap6
+        swap1
+        swap6
+        and
+        swap3
+        add
+        swap2
+        dup3
+        mstore
+        pop
+        0x40
+        dup1
+        mload
+        dup1
+        dup4
+        sub
+        0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8
+        add
+        dup2
+        mstore
+        0x18
+        swap1
+        swap3
+        add
+        swap1
+        dup2
+        swap1
+        mstore
+            /* "src/deposit.sol":5700:5832  sha256(abi.encodePacked(... */
+        dup2
+        mload
+            /* "src/deposit.sol":5707:5831  abi.encodePacked(... */
+        swap2
+        swap6
+        pop
+        swap4
+        pop
+        dup4
+        swap3
+            /* "src/deposit.sol":5700:5832  sha256(abi.encodePacked(... */
+        dup6
+        add
+        swap2
+        pop
+        dup1
+            /* "src/deposit.sol":5707:5831  abi.encodePacked(... */
+        dup4
+            /* "src/deposit.sol":5700:5832  sha256(abi.encodePacked(... */
+        dup4
+    tag_149:
+        0x20
+        dup4
+        lt
+    tag_151
+        jumpi
+        dup1
+        mload
+        dup3
+        mstore
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0
+        swap1
+        swap3
+        add
+        swap2
+        0x20
+        swap2
+        dup3
+        add
+        swap2
+        add
+        tag_149
+        jump
+    tag_151:
+        mload
+        dup2
+        mload
+        0x20
+        swap4
+        dup5
+        sub
+        0x0100
+        exp
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        add
+        dup1
+        not
+        swap1
+        swap3
+        and
+        swap2
+        and
+        or
+        swap1
+        mstore
+        0x40
+        mload
+        swap2
+        swap1
+        swap4
+        add
+        swap5
+        pop
+        swap2
+        swap3
+        pop
+        pop
+        dup1
+        dup4
+        sub
+        dup2
+        dup6
+        gas
+        staticcall
+        iszero
+        dup1
+        iszero
+    tag_153
+        jumpi
+        returndatasize
+        0x00
+        dup1
+        returndatacopy
+        returndatasize
+        0x00
+        revert
+    tag_153:
+        pop
+        pop
+        pop
+        0x40
+        mload
+        returndatasize
+        0x20
+        dup2
+        lt
+        iszero
+    tag_154
+        jumpi
+        0x00
+        dup1
+        revert
+    tag_154:
+        pop
+        mload
+        swap3
+        pop
+        pop
+        pop
+            /* "src/deposit.sol":5247:5839  function get_deposit_root() override external view returns (bytes32) {... */
+        swap1
+        jump	// out
+            /* "src/deposit.sol":8955:9422  function to_little_endian_64(uint64 value) internal pure returns (bytes memory ret) {... */
+    tag_44:
+            /* "src/deposit.sol":9055:9067  new bytes(8) */
+        0x40
+        dup1
+        mload
+            /* "src/deposit.sol":9065:9066  8 */
+        0x08
+            /* "src/deposit.sol":9055:9067  new bytes(8) */
+        dup1
+        dup3
+        mstore
+        dup2
+        dup4
+        add
+        swap1
+        swap3
+        mstore
+            /* "src/deposit.sol":9021:9037  bytes memory ret */
+        0x60
+        swap2
+            /* "src/deposit.sol":9055:9067  new bytes(8) */
+        0x20
+        dup3
+        add
+        dup2
+        dup1
+        calldatasize
+        dup4
+        calldatacopy
+        add
+        swap1
+        pop
+        pop
+            /* "src/deposit.sol":9049:9067  ret = new bytes(8) */
+        swap1
+        pop
+            /* "src/deposit.sol":9097:9110  bytes8(value) */
+        0xc0
+        dup3
+        swap1
+        shl
+        dup1
+            /* "src/deposit.sol":9189:9190  7 */
+        0x07
+            /* "src/deposit.sol":9178:9191  bytesValue[7] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9169:9172  ret */
+        dup3
+            /* "src/deposit.sol":9173:9174  0 */
+        0x00
+            /* "src/deposit.sol":9169:9175  ret[0] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_159
+        jumpi
+        invalid
+    tag_159:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9169:9191  ret[0] = bytesValue[7] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9210:9220  bytesValue */
+        dup1
+            /* "src/deposit.sol":9221:9222  6 */
+        0x06
+            /* "src/deposit.sol":9210:9223  bytesValue[6] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9201:9204  ret */
+        dup3
+            /* "src/deposit.sol":9205:9206  1 */
+        0x01
+            /* "src/deposit.sol":9201:9207  ret[1] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_161
+        jumpi
+        invalid
+    tag_161:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9201:9223  ret[1] = bytesValue[6] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9242:9252  bytesValue */
+        dup1
+            /* "src/deposit.sol":9253:9254  5 */
+        0x05
+            /* "src/deposit.sol":9242:9255  bytesValue[5] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9233:9236  ret */
+        dup3
+            /* "src/deposit.sol":9237:9238  2 */
+        0x02
+            /* "src/deposit.sol":9233:9239  ret[2] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_163
+        jumpi
+        invalid
+    tag_163:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9233:9255  ret[2] = bytesValue[5] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9274:9284  bytesValue */
+        dup1
+            /* "src/deposit.sol":9285:9286  4 */
+        0x04
+            /* "src/deposit.sol":9274:9287  bytesValue[4] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9265:9268  ret */
+        dup3
+            /* "src/deposit.sol":9269:9270  3 */
+        0x03
+            /* "src/deposit.sol":9265:9271  ret[3] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_165
+        jumpi
+        invalid
+    tag_165:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9265:9287  ret[3] = bytesValue[4] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9306:9316  bytesValue */
+        dup1
+            /* "src/deposit.sol":9317:9318  3 */
+        0x03
+            /* "src/deposit.sol":9306:9319  bytesValue[3] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9297:9300  ret */
+        dup3
+            /* "src/deposit.sol":9301:9302  4 */
+        0x04
+            /* "src/deposit.sol":9297:9303  ret[4] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_167
+        jumpi
+        invalid
+    tag_167:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9297:9319  ret[4] = bytesValue[3] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9338:9348  bytesValue */
+        dup1
+            /* "src/deposit.sol":9349:9350  2 */
+        0x02
+            /* "src/deposit.sol":9338:9351  bytesValue[2] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9329:9332  ret */
+        dup3
+            /* "src/deposit.sol":9333:9334  5 */
+        0x05
+            /* "src/deposit.sol":9329:9335  ret[5] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_169
+        jumpi
+        invalid
+    tag_169:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9329:9351  ret[5] = bytesValue[2] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9370:9380  bytesValue */
+        dup1
+            /* "src/deposit.sol":9381:9382  1 */
+        0x01
+            /* "src/deposit.sol":9370:9383  bytesValue[1] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9361:9364  ret */
+        dup3
+            /* "src/deposit.sol":9365:9366  6 */
+        0x06
+            /* "src/deposit.sol":9361:9367  ret[6] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_171
+        jumpi
+        invalid
+    tag_171:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9361:9383  ret[6] = bytesValue[1] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":9402:9412  bytesValue */
+        dup1
+            /* "src/deposit.sol":9413:9414  0 */
+        0x00
+            /* "src/deposit.sol":9402:9415  bytesValue[0] */
+        byte
+        0xf8
+        shl
+            /* "src/deposit.sol":9393:9396  ret */
+        dup3
+            /* "src/deposit.sol":9397:9398  7 */
+        0x07
+            /* "src/deposit.sol":9393:9399  ret[7] */
+        dup2
+        mload
+        dup2
+        lt
+    tag_173
+        jumpi
+        invalid
+    tag_173:
+        0x20
+        add
+        add
+            /* "src/deposit.sol":9393:9415  ret[7] = bytesValue[0] */
+        swap1
+        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        not
+        and
+        swap1
+        dup2
+        0x00
+        byte
+        swap1
+        mstore8
+        pop
+            /* "src/deposit.sol":8955:9422  function to_little_endian_64(uint64 value) internal pure returns (bytes memory ret) {... */
+        pop
+        swap2
+        swap1
+        pop
+        jump	// out
+            /* "--CODEGEN--":5:323   */
+    tag_61:
+        0x00
+        dup1
+            /* "--CODEGEN--":155:163   */
+        dup6
+            /* "--CODEGEN--":143:153   */
+        dup6
+            /* "--CODEGEN--":140:164   */
+        gt
+            /* "--CODEGEN--":137:139   */
+        iszero
+    tag_176
+        jumpi
+        dup2
+        dup3
+            /* "--CODEGEN--":167:179   */
+        revert
+            /* "--CODEGEN--":137:139   */
+    tag_176:
+            /* "--CODEGEN--":202:208   */
+        dup4
+            /* "--CODEGEN--":192:200   */
+        dup7
+            /* "--CODEGEN--":189:209   */
+        gt
+            /* "--CODEGEN--":186:188   */
+        iszero
+    tag_177
+        jumpi
+        dup2
+        dup3
+            /* "--CODEGEN--":212:224   */
+        revert
+            /* "--CODEGEN--":186:188   */
+    tag_177:
+        pop
+        pop
+            /* "--CODEGEN--":244:275   */
+        dup3
+        add
+        swap4
+            /* "--CODEGEN--":293:318   */
+        swap2
+        swap1
+        swap3
+        sub
+        swap2
+        pop
+            /* "--CODEGEN--":131:323   */
+        jump	// out
+        stop
+}
